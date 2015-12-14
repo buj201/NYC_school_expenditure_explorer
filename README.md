@@ -4,7 +4,9 @@ Author: Benjamin Jakubowski
 Date: 12/15/2015
 
 The purpose of this tool is to allow users to visually explore:
+
 1. Differences in funding across NYC schools, and the relationship between funding and school characteristics (described <a href='http://schools.nyc.gov/Offices/DBOR/SBER/costvary.htm'> here by NYC Department of Education</a>).
+
 2. Expenditures, by category, for a specific school across the years 2006-2012. For context, the majority of schools' budgets are discretionary, with funds used at the principal's discretion (see chart below, from <a href='http://schools.nyc.gov/offices/d_chanc_oper/budget/dbor/allocationmemo/fy12_13/FY13_PDF/FSF_Guide.pdf'>Fair Student Funding and School Budget Resource Guide </a>).
 This tool allows the user to see how, in fact, a school's principal is choosing to use these fair school funds.
 
@@ -30,13 +32,19 @@ This program gets and cleans the 2006-2012 NYC School Expenditure data, gets and
 
 2. expenditure_visualizer:
 This program contains the modules and classes necessary to visualize the NYC School expenditure data. It is run from the Jupyter/iPython Notebook by:
+
 (i) Opening Jupyter/iPython notebook (terminal command: ‘jupyter notebook’ or equivalently ‘ipython notebook’).
+
 (ii) Navigating to the expenditure_visualizer directory in your file system.
+
 (iii) Opening the ‘main.ipynb’ iPython notebook and running the code cells (with %run magic being used to call each of the three visualization modules).
 
 ## Credits
 
 Data sources used include:
+
 1. The <a href='https://data.cityofnewyork.us/Education/School-Demographics-and-Accountability-Snapshot-20/ihfw-zy9j'> NYC School Demographics and Accountability Snapshot 2006-2012 </a>, which includes demographic information for all NYC Public schools from 2006-2012;
+
 2. The Research Alliance for New York City Schools <a href='http://steinhardt.nyu.edu/research_alliance/research/schma'>School-Level Master File (SCHMA)</a>, which (in this work) is only used to obtain geographic coordinates for schools from 2010-2012;
+
 3. NYC <a href='http://schools.nyc.gov/Offices/DBOR/SBER/default.htm'>School-Based Expenditure Reports</a>, which were scraped to get the expenditure data used for all visualizations.
