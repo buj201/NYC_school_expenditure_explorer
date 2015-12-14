@@ -33,11 +33,11 @@ This program gets and cleans the 2006-2012 NYC School Expenditure data, gets and
 2. expenditure_visualizer:
 This program contains the modules and classes necessary to visualize the NYC School expenditure data. It is run from the Jupyter/iPython Notebook by:
 
-(i) Opening Jupyter/iPython notebook (terminal command: ‘jupyter notebook’ or equivalently ‘ipython notebook’).
+  1. Opening Jupyter/iPython notebook (terminal command: ‘jupyter notebook’ or equivalently ‘ipython notebook’).
 
-(ii) Navigating to the expenditure_visualizer directory in your file system.
+  2. Navigating to the expenditure_visualizer directory in your file system.
 
-(iii) Opening the ‘main.ipynb’ iPython notebook and running the code cells (with %run magic being used to call each of the three visualization modules).
+  3. Opening the ‘main.ipynb’ iPython notebook and running the code cells (with %run magic being used to call each of the three visualization modules).
 
 ## Credits
 
