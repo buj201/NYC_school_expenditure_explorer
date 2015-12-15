@@ -5,8 +5,8 @@ Created on Dec 10, 2015
 '''
 import unittest
 import pandas as pd
-from check_webscraper_coverage import check_webscraper_coverage
-
+from check_webscraper_coverage import check_webscraper_coverage, retry_if_URL_error_not_HTTP_error
+from urllib2 import HTTPError, URLError
 
 class Test(unittest.TestCase):
 
@@ -31,7 +31,7 @@ class Test(unittest.TestCase):
     def test_shape_clean_SCHMA(self):
         SCHMA = pd.read_csv('../data/clean_SCHMA.csv', index_col=0)
         self.assertEqual(SCHMA.shape[1], 4)
-
+        
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
