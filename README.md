@@ -36,9 +36,9 @@ This program contains the modules and classes necessary to visualize the NYC Sch
 
   1. Opening Jupyter/iPython notebook (terminal command: ‘jupyter notebook’ or equivalently ‘ipython notebook’).
 
-  2. Navigating to the expenditure_visualizer directory in your filesystem.
+  2. Using the Jupyer GUI to navigating to the expenditure_visualizer directory in your filesystem.
 
-  3. Opening the ‘main.ipynb’ iPython notebook and running the code cells (with python %run magic being used to call each of the four visualization modules in the package).
+  3. Opening the ‘main.ipynb’ iPython notebook and running the code cells (with python %run magic being used to call each of the visualization modules in the package).
 
 ## Credits
 
