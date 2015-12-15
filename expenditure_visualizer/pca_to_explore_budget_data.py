@@ -19,7 +19,7 @@ class pca_explorer(object):
     Class to encapsulate data and methods for interactive school expenditure visualization.
     The class uses principal components analysis to aid visualization of the school
     expenditure data. School expenditures are reported for approximately 50 categories. While
-    this dimensionality can be reduced by visualizing only total expenditures, this approach
+    this dimensionality can be reduced by visualizing only total expenditures (or any single category), this approach
     will miss potentially interesting variation between schools by expenditure category.
     Thus, pca_explorer:
         - Finds the principal components for the expenditure data for each year

@@ -46,6 +46,7 @@ class NYC_school_interactive_map(object):
         Reads in the merged data set containing expenditure and demographic features for each school,
         for each year 2010-2012.
         '''
+        #Read in expenditure/demographic data
         all_years_data = {}
         for year in range(2010,2013):
             all_years_data[year] = pd.read_csv('../data/merged_data/expenditure_demo_account_year_{}.csv'.format(str(year)), index_col=0)
@@ -107,7 +108,7 @@ class NYC_school_interactive_map(object):
         m = self.basemap
         data = self.all_years_data[year]
         ##add points and color bar for the default feature- note the same colormap is used for 
-        ##all plots producedd by interactive_update, so the specific feature used is irrelevant.
+        ##all plots produced by interactive_update, so the specific feature used is irrelevant.
         percentiles = [stats.percentileofscore(data[feature],x,kind='weak')/100.0 for x in data[feature]]
         schools = m.scatter(data['LCGGEOX'].values, data['LCGGEOY'].values, latlon=True, s=30, c=percentiles, alpha=0.8, cmap='cool')
         ax.set_title('NYC Schools, colored by ranked on\n{} expenditures for year = {}'.format(self.features_for_labels(feature), str(year)))

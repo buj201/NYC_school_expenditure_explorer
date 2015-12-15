@@ -24,7 +24,7 @@ def run_from_ipython(): ### Note code below from Tom Dunham, StackOverflow, 03/2
     
 def data_available():
     '''
-    Check if thenecessary data available
+    Check if the necessary data available
     '''
     for year in range(2006,2013): 
         if not os.path.exists('../data/merged_data/expenditure_demo_account_year_{}.csv'.format(str(year))):
@@ -45,5 +45,5 @@ def try_call_function(function):
         if not run_from_ipython():
             print 'This program must be called from within an ipython interactive notebook.'
         elif not data_available():
-            print 'The necessary data is not avialable- please run main.py in get_and_clean data first.'
+            print 'The necessary data is not available- please run main.py in get_and_clean data first.'
     return

@@ -16,22 +16,26 @@ from IPython.display import display
 class boxplot_comparisons(object):
     '''
     Class to encapsulate data and methods for interactive boxplots. Once boxplot_comparisons
-    has been initialized, a number of dropdown menus are generated, allowing the user to select
+    has been initialized, a user input menus is generated, allowing the user to select
         - An expenditure (i.e. Teachers, Principals, textbooks) to plot
         - A demographic feature to group schools by
         - A checkbox allowing the user to specify whether the expenditure should be normalized
         (so the expenditures are plotted as a percent of a school's total expenditures).
     Upon new user input through the ipywidget menu, a new array of boxplots is generated and
     output to the screen.
+    
+    Note this class will only behave as expected in the Jupyter iPython notebook environment
+    since it uses is built on the ipywidget package.
     '''
     
-    def __init__(self, feature = 'Total', year = 2012):
+    def __init__(self):
         self.all_years_data = self.read_all_years_data()
         self.expenditure_options = self.build_expenditure_dicts()
         self.groupby_options = self.build_groupby_dicts()
-        w = interactive(self.make_boxplot, expenditure=widgets.Dropdown(options=self.expenditure_options,value='Total',description='Expenditure category:'),
-                groupby_feature=widgets.Dropdown(options=self.groupby_options,value='Title_1',description='Group schools by feature:'),
-                normalized=widgets.Checkbox(description='Plot expenditure as percent of total:', value=False))
+        w = interactive(self.make_boxplot,
+                        expenditure=widgets.Dropdown(options=self.expenditure_options,value='Total',description='Expenditure category:'),
+                        groupby_feature=widgets.Dropdown(options=self.groupby_options,value='Title_1',description='Group schools by feature:'),
+                        normalized=widgets.Checkbox(description='Plot expenditure as percent of total:', value=False))
         w.border_color = 'red'
         w.border_style = 'dotted'
         w.border_width = 3
@@ -53,7 +57,7 @@ class boxplot_comparisons(object):
             expenditure: expenditure type (ex: Total, Teachers)
             groupby_feature: demographic or other school characteristic (ex: poverty_level)
             normalized: boolean
-        Note input is not accepted from the user, but instead passed from the interactive iPywidget.
+        Note input is not accepted directly from the user, but instead passed from the interactive iPywidget.
         
         When %matplotlib inline magic on in ipython notebook, prints a plot with 7 boxplots
         comparing the input expenditure, by groupby_feature, across all years (2006-2012).
@@ -107,7 +111,7 @@ class boxplot_comparisons(object):
             ## Add labels to x and axis, ticks, legend
             axes[year].set_title(str(year))
             axes[year].set_xlabel('')
-            axes[year].set_ylim((0,max_val))
+            axes[year].set_ylim((0,max_val)) ##want comparability across years
             axes[year].set_xlim((0,len(quartiles_or_fewer_bins[year].value_counts())+1))
             axes[year].set_xticklabels(self.make_xtick_labels(groupby_feature)[year].values())
             axes[year].legend(loc='best')
@@ -156,14 +160,14 @@ class boxplot_comparisons(object):
         '''
         labels = {}
         for year in range(2006,2013):
-                if len(self.all_years_data[year][groupby_feature].value_counts()) ==2:
+                if len(self.all_years_data[year][groupby_feature].value_counts()) == 2:
                     label = self.make_labels_from_features()[groupby_feature]
-                    
                     ##Append "school" to features like Title_1, which lacks "school" string.
                     if 'School' not in label:
                         label = label + ' school'
                     labels[year] = {1:'{}s'.format(label), 0:'non-{}s'.format(label)}
-                else:
+                    
+                else: ##Non-binary feature
                     labels[year] = {i:'Quartile {}'.format(i) for i in range(1,5)}
         return labels
     
