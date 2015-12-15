@@ -11,7 +11,7 @@ from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 from scipy import stats
 import re
-from ipywidgets import interactive
+from ipywidgets import interactive, widgets
 from IPython.display import display
 
 class pca_explorer(object):
@@ -37,7 +37,8 @@ class pca_explorer(object):
         self.all_years_data = self.norm_numeric()
         self.trans_x = self.PCA_fit()
         self.widget_keys =  self.make_keys_for_interactive_widget()
-        self.w = interactive(self.plot_in_transformed_dimensions, feature=self.widget_keys)
+        self.w = interactive(self.plot_in_transformed_dimensions,
+                             feature=widgets.Dropdown(options = self.widget_keys, description='Group schools by feature:', value="total_enrollment"))
         self.w.border_color = 'red'
         self.w.border_style = 'dotted'
         self.w.border_width = 3
@@ -101,11 +102,12 @@ class pca_explorer(object):
             (from the 2006-2012 NYC School Demographics and Accountability Snapshot) selected by the
             user.
         '''
+        plt.close('all')
         all_years_data = self.all_years_data
         trans_x = self.trans_x
         self.feature = feature
-        fig = plt.figure(figsize=(10,23))   
-        fig.subplots_adjust(hspace = .3) 
+        fig = plt.figure(figsize=(13,23))   
+        fig.subplots_adjust(hspace = .3, wspace=.2) 
         for year in all_years_data:
             ax = plt.subplot(4,2,year-2005)
             mask = (all_years_data[year]['Title_1'] == 1)
@@ -126,9 +128,9 @@ class pca_explorer(object):
         ax.text(0, 1.05,"Explanation:\nIn these figures, Principal Components\nAnalysis (PCA) is used to reduce the\n"
         "dimensionality of the expenditure datset\n(from approximately 50 features) to just\n"
         "two dimensions. Then each school is plotted\nin this transformed space.\nNote the axes in these plots do not\n"
-        "correspond to any single expenditure\n(or expenditure category). Instead, they\nallow you to more easily visualize\n"
-        "the expenditure data to identify\ntrends or clusters in the data.\nAdditionally, note PCA is applied to each\n"
-        "year individually, so the axis are variable.", fontsize=11, horizontalalignment='left', verticalalignment='top',
+        "correspond to any single expenditure\n(or expenditure category). Instead, they\nallow the user to more easily visualize\n"
+        "the expenditure data to identify\ntrends or clusters in the data.\nOn a more technical note, PCA is applied to each\n"
+        "year individually, so the axes are variable.", fontsize=11, horizontalalignment='left', verticalalignment='top',
         multialignment='left', transform=ax.transAxes)
         ax.legend(handles, labels, shadow=True, loc='lower center', scatterpoints=1, title='School Category', fontsize='small')
         cbar = fig.colorbar(title1schools, orientation='horizontal', pad=0.02)

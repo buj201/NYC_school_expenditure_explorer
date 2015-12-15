@@ -6,7 +6,7 @@ Date: 12/15/2015
 
 The purpose of this tool is to allow users to visually explore:
 
-1. Differences in funding across NYC schools, and the relationship between funding and school characteristics (described <a href='http://schools.nyc.gov/Offices/DBOR/SBER/costvary.htm'> here by NYC Department of Education</a>).
+1. Differences in funding across NYC schools, and the relationship between school expenditures and characteristics (described <a href='http://schools.nyc.gov/Offices/DBOR/SBER/costvary.htm'> here by NYC Department of Education</a>).
 
 2. Expenditures, by category, for a user-input school across the years 2006-2012. For context, the majority of schools' budgets are discretionary, with funds used at the principal's discretion (see, for example, <a href='http://schools.nyc.gov/offices/d_chanc_oper/budget/dbor/allocationmemo/fy12_13/FY13_PDF/FSF_Guide.pdf'>Fair Student Funding and School Budget Resource Guide </a>). This tool allows the user to see how, in fact, a school's principal is choosing to use these fair school funds.
 
@@ -20,7 +20,7 @@ This program has many dependencies. In addition to packages in the standard libr
 - sklearn: http://scikit-learn.org/stable/install.html
 - lxml.html: http://lxml.de/installation.html
 - retrying: https://pypi.python.org/pypi/retrying
-- six (retrying requires six versions 1.7.0 or greater): https://pypi.python.org/pypi/six
+- six (note retrying requires six versions 1.7.0 or greater): https://pypi.python.org/pypi/six
 
 ## Usage
 
@@ -38,7 +38,7 @@ This program contains the modules and classes necessary to visualize the NYC Sch
 
   2. Navigating to the expenditure_visualizer directory in your filesystem.
 
-  3. Opening the ‘main.ipynb’ iPython notebook and running the code cells (with python %run magic being used to call each of the three visualization modules in the package).
+  3. Opening the ‘main.ipynb’ iPython notebook and running the code cells (with python %run magic being used to call each of the four visualization modules in the package).
 
 ## Credits
 
